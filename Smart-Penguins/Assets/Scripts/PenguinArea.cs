@@ -19,7 +19,7 @@ public class PenguinArea : Area
 
     private void Update()
     {
-        cumulativeRewardText.text = agent.GetCumulativeReward().ToString(CultureInfo.InvariantCulture);
+        cumulativeRewardText.text = agent.GetCumulativeReward().ToString("0.00", CultureInfo.InvariantCulture);
     }
 
     public override void ResetArea()
