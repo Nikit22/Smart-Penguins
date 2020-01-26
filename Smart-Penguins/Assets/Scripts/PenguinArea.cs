@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using MLAgents;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,11 @@ public class PenguinArea : Area
     [HideInInspector] public float feedRadius = 1f;
 
     private readonly List<GameObject> fishBeings = new List<GameObject>();
+
+    private void Update()
+    {
+        cumulativeRewardText.text = agent.GetCumulativeReward().ToString(CultureInfo.InvariantCulture);
+    }
 
     public override void ResetArea()
     {
@@ -67,6 +73,7 @@ public class PenguinArea : Area
             fish.transform.parent = transform;
             
             fishBeings.Add(fish);
+            fish.GetComponent<Fish>().speed = speed;
         }
     }
 }
